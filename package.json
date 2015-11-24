@@ -1,0 +1,19 @@
+{
+  "name": "enrique-arias-site",
+  "version": "1.0.0",
+  "description": "My web site",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "personal",
+    "site"
+  ],
+  "author": "= <=> (=)",
+  "license": "ISC",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-sass": "^2.1.0"
+  }
+}

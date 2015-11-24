@@ -1,0 +1,8 @@
+# temp files
+.DS_Store
+.tmp
+
+# npm & bower
+/node_modules/
+/bower_components/
+
