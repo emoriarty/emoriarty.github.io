@@ -1,8 +1,7 @@
-# temp files
+node_modules/
+public
+.gatsby-context.js
 .DS_Store
-.tmp
-
-# npm & bower
-/node_modules/
-/bower_components/
-*.un~
+.intermediate-representation/
+.cache/
+yarn.lock
