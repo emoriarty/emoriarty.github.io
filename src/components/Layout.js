@@ -4,6 +4,8 @@ import LanguageSwitcher from './LanguageSwitcher'
 
 import { rhythm } from '../utils/typography'
 
+import '../assets/style.css'
+
 class Layout extends React.Component {
   render() {
     const { location, config, children, translations } = this.props
