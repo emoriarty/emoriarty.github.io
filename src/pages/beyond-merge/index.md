@@ -135,7 +135,8 @@ git push --force
 
 Never, ever, force a push on a collaborative branch. It will destroy 
 modifications being carried out by other repository members and you will 
-become a hatred object among colleagues. Use --force only with your own branches.
+become a hatred object among colleagues. Use `--force` only with your own 
+branches.
 
 To prevent possible overwritings on the remote branch, there is the 
 `--force-with-lease` option. Whilst the `--force` option will push changes no 
@@ -151,4 +152,24 @@ git push --force-with-lease
 
 While working in a branch we don't pay much attention how the the commit 
 history looks like. In fact we are focused on development. But when the current 
-work is already completed, is time to sort the log.
+work is already completed, is time to sort the log. We don't want to look like
+we're suffering Diogenes syndrome, accumulating all those non-useful commits.
+
+```bash
+259aff2 (HEAD -> A) body edit
+7a48555 wip: body content
+71a621b A file updated
+2dc6065 new A file
+d9ad32e (master) A new commit is introduced while previous changes are in stash
+13b16a5 Revert "README updated"
+76a1097 Demo file updated
+a31e004 README updated
+44d4c5b New README file
+ee42779 New demo file
+```
+
+The upper log shows a log history where the master branch (d9ad32e) and the 
+local HEAD (259aff2) points to different commits. Except the first commit 
+(2dc6065) there are no meaningful descriptions between them. Since each commit 
+refers to the same feature, a suitable solution to arrange the log is to use 
+`rebase` to join them into one commit. 
