@@ -105,7 +105,7 @@ A1———A2———A3———A4
 While updating the branch is intended to be carried out as often as possible, 
 sometimes the differences between both branches are too complex that conflicts 
 arise. As with merge conflicts must be resolved but interactevely. `rebase` let 
-us decide what to do in case of conflicts: fix them an continue or abort. Below
+us decide what to do in case of conflicts: fix them and continue or abort. Below
 there's a list with the most used options.
 
 ```bash
@@ -115,4 +115,40 @@ git rebase —-abort    # stop rebase and leave things as thet were
 git rebase --quit     # like abort but keeping the committed changes
 ```
 
+## Forcing push for rebased branches
 
+It can happen when rebasing, sometimes, the remote repository rejects new 
+changes because of the rebase itself. The rejection message will read something 
+about our local branch is behind the remote one.
+
+When the rebase is executed, the new changes are put in the middle of the 
+commits stack, desynchronising with the remote picture. In this particular 
+case, the message is confusing, it will ask you to updated from remote branch 
+which, obviously, we don’t want.
+
+In order to solve this problem, the push command can be forced by passing the 
+`--force` option.
+
+```bash
+git push --force
+```
+
+Never, ever, force a push on a collaborative branch. It will destroy 
+modifications being carried out by other repository members and you will 
+become a hatred object among colleagues. Use --force only with your own branches.
+
+To prevent possible overwritings on the remote branch, there is the 
+`--force-with-lease` option. Whilst the `--force` option will push changes no 
+matter what, `--force-with-lease` won’t allow any update if some other 
+collaborator has added changes to the remote branch. So, remember, always is 
+preferable using this option.
+
+```bash
+git push --force-with-lease
+```
+
+## Choosing commits for review
+
+While working in a branch we don't pay much attention how the the commit 
+history looks like. In fact we are focused on development. But when the current 
+work is already completed, is time to sort the log.
