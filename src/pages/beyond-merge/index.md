@@ -148,7 +148,7 @@ preferable using this option.
 git push --force-with-lease
 ```
 
-## Choosing commits for review
+## Choosing commits
 
 While working in a branch we don't pay much attention how the the commit 
 history looks like. In fact we are focused on development. But when the current 
@@ -173,3 +173,50 @@ local HEAD (259aff2) points to different commits. Except the first commit
 (2dc6065) there are no meaningful descriptions between them. Since each commit 
 refers to the same feature, a suitable solution to arrange the log is to use 
 `rebase` to join them into one commit. 
+
+`rebase` is not only an alternative to the merge command. Actually, the command 
+is meant to rewrite the project history. With that notion in mind, `rebase` is 
+able to be used in the same branch. Instead of specifying a branch name, a 
+previous commit is passed in. Actually a branch name is not more that a 
+meaningful name pointing to a commit.
+
+There is more regarding the rebase. It can be executed automatically by default 
+or interactively by passing the `-i` option. The Interactive mode gives the 
+possibility to rearrange the log by modifying each commit with a specific command.
+
+```bash
+g rebase -i d9ad32e
+```
+
+After running the previous command, the default editor pops out opening the 
+next file. In my case, vim is the default editor but you can set out yours 
+by using the git config [core.editor][coreditor] option.
+
+```bash
+reword 2dc6065 new A file
+fixup 71a621b A file updated
+fixup 7a48555 wip: body content
+fixup 259aff2 body edit
+```
+
+`fixup` or `f` for short, merges in bulk the marked commits with the previously 
+picked one. In difference with `squash`, `fixup` don't reuse the provided message.
+
+`reword` allows to rewrite the commit message. `rebase` executes the provided 
+actions after saving the file and closing the editor. When the task has been 
+completed, the editor jumps again, allowing us to introduce the new commit description. 
+
+Once the rebase has completed, the next log looks like below.
+
+```bash
+2569f57 (HEAD -> A) feature A
+d9ad32e (master) A new commit is introduced while previous changes are in stash
+13b16a5 Revert "README updated"
+76a1097 Demo file updated
+a31e004 README updated
+44d4c5b New README file
+ee42779 New demo file
+```
+
+
+[coreditor]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_code_core_editor_code
