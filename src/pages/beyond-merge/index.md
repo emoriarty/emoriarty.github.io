@@ -217,6 +217,28 @@ a31e004 README updated
 44d4c5b New README file
 ee42779 New demo file
 ```
+## Autosquash (or how to keep a clean log)
 
+Sometimes it happens to have a sudden idea while working on in a total different 
+subject. You stop working immediately what you're at and start on that new idea. 
+Damn serendipity!
+
+The next steps from a git perspective are (1) saving things up and (2) create a 
+new branch. Now, we are able to work in whatever is that brilliant idea. The 
+git loop starts: Work. Test things up. Save progress. And back to the beginning
+of the loop until the job is done.
+
+Finally we go back to the unfinished branch and start working again in the same loop.
+
+Lots of commits are created during this process. All of them refers to the same
+topic. So, why all these commits when actually only one commit will do? Is it not
+easier to search in the log for a commit with a one nice and concise message than
+looking for a bunch of different commits? Are they in the same slot? Do they got
+interlaced among unrelated commits?
+
+All right, we can pick up commits doing a rebase, but why bother when we already
+know everything relates to the same piece?
+
+Let’s tackle the *autosquash* feature.
 
 [coreditor]: https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_code_core_editor_code
