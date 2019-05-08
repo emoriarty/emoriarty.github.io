@@ -2,6 +2,7 @@
 title: Beyond Merge
 date: "2019-05-01T16:31:03.284Z"
 language: "en"
+translations: [ "es", "mas-alla-de-merge" ]
 ---
 
 Everyone who has spent some time working with git irremediably knows about
