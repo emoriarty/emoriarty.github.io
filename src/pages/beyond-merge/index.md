@@ -2,12 +2,12 @@
 title: Beyond Merge
 date: "2019-05-01T16:31:03.284Z"
 language: "en"
-translations: [ "es", "mas-alla-de-merge" ]
+translations: [ "es", "es/mas-alla-de-merge" ]
 ---
 
 Everyone who has spent some time working with git irremediably knows about
-merging. Suppose we have a branch called *A* coming from master. The merge
-command brings the changes carried in *A* into master.
+merging. Suppose we have a branch called *A* coming from master. The `merge`
+command brings the changes carried in *A* into *master*.
 
 ```bash
 71a621b (HEAD -> master) (A) A file updated
@@ -50,17 +50,21 @@ use of a recursive strategy intertwining *A* and *B* commits.
 1———2———3———B1———A1———B2———A2
 ```
 
-Interlaced commits don’t keep proper track of branching blocks. There is a way
-to prevent this scenario once a feature is completed. Instead of merging the
-whole bunch of commits, a better option is pushing the changes into *master* (or
-develop) as a unique commit with a descriptive message. This approach improves
-the git log traceability.
+Interlaced commits don’t keep proper track of branching blocks. Indeed, as seen
+above, the *B* commits precede the ones from *A*, when in fact they were introduced
+after. Besides, the commits are not aligned by meaning, each belonging commit to A
+should be placed before the *B* ones.
+
+There is a way to prevent this scenario once a feature is completed. Instead of
+merging the whole bunch of commits, a better option is pushing the changes into
+*master* (or develop) as a unique commit with a descriptive message. This
+approach improves the git log traceability.
 
 Perhaps for personal or one-man sized projects is not too important (it is better
 to keep at good habits, though) having a strict sorted timeline of events.
 But when comes to big teams where each feature needs to be perfectly isolated and
 tagged, an unsorted log history would make the difference between mayhem and
-harmony.
+harmony in the enterprise.
 
 For those newbies in git (and whose did not find much time to dive into) 
 there’s more than only merging.
