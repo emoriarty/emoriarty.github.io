@@ -75,3 +75,91 @@ tiempo para profundizar) hay más opciones aparte del comando `merge`.
 Vamos más allá de `merge`.
 
 ## Rebase
+
+A diferencia de *merge*, *rebase* permite hacer un *merge* basado en la propia rama,
+manteniendo los *commits* relacionados en un mismo lote.
+
+```bash
+1———2———3———A1———A2———B1———A2
+```
+
+Como podemos comprobar arriba, la rama mantiene una linealiad acorde a los bloques
+de trabajo y no por marca temporal. 
+
+Un forma interesante para prevenir conflictos mientras se trabaja en una rama
+nueva, es actualizar el espacio de trabajo actual con los cambios de la rama
+origen.
+
+```git
+git rebase <origin-branch> 
+```
+
+Dado el siguiente estado.
+
+```bash
+        B1———B2
+       /
+A1———A2———A3———A4
+```
+
+El comando `rebase` permite quitar momentáneamente los commits actuales (los que
+no están presente en la rama de origen), volcar los nuevos commits y vuelve a
+incluir los cambios actuales.
+
+```bash
+                  B1———B2
+                 /
+A1———A2———A3———A4
+```
+
+Aunque se pretende actualizar habitualmente la rama de trabajo actual, puede pasar
+que las diferencias entre ambas ramas sean demasiado complejas que los conflictos
+terminan apareciendo. Al igual que `merge`, los conflictos deben ser solucionados
+aunque pude hacerse de manera interactive. `rebase` permite que hacer en caso
+de conflicto: solucionarlos o abortar acción. Abajo se muestra una lista con las
+acciones disponibles en caso de conflicto.
+
+```bash
+git rebase --continue # follow rebase
+git rebase --skip     # jump current conflict
+git rebase —-abort    # stop rebase and leave things as they were
+git rebase --quit     # like abort but keeping the committed changes
+```
+
+## Forzando *push*
+
+Puede pasar cuando se está haciendo un *rebase*, el repositorio remoto rechaza
+los nuevos cambios el hecho del propio *rebase*. La mensaje devuelto dice algo
+así como que la rama local está por detrás de la remota.
+
+Cuando `rebase` ha sido llevado a cabo, los cambios provenientes de la rama de
+origen son situados antes de la pila de commits pertenecientes a la rama de trabajo,
+desincronizando la rama homólogo en remoto. En este caso particular, el mensaje es
+algo confuso, nos pide actualizar desde remote cuando en realidad no es así. 
+
+A finde de solventar este problema, el comando `push` puede ser forzado usando la
+opción `--force`.
+
+```bash
+git push --force
+```
+
+__Nunca, pero nunca, se debe forzar una acción *push* en una rama colaborativa__.
+Esta acción destruirá las modificaciones que habrían sido llevadas a cabo por otros
+miembros del repositorio y tú terminarías por convertirte en objeto de odio entre
+los compañeros. Solo deberías usar `--force` en una rama remota donde solo tú seas
+el único usuario.
+
+Para evitar posibles sobrescrituras en una rama remota, existe la opción
+`--force-with-lease`. Mientras que `--force` fuerza los cambios sin miramientos,
+`--force-with-lease` no actualizará si detecta que cualquier otro miembro
+ha añadido sus modificaciones en remoto.
+
+Así que, recuerda, siempre es preferible no forzar un `push` pero si no hay más
+remedio, entonces tira de `--force-with-lease`.
+
+```bash
+git push --force-with-lease
+```
+
+## Seleccionando *commits*

@@ -80,17 +80,17 @@ track of those related commits blocks in the same slot.
 1———2———3———A1———A2———B1———A2
 ```
 
-While the origin branch’s history keeps linear, the new feature commits are
-placed just ahead, maintaining a more coherent log.
+The above picture shows how the the origin branch conserves a linear order
+according to the working blocks and not by timestamps.
 
 A convenient way to prevent conflicts while working on a feature branch is to
 bring frequently the latest changes from origin branch.
 
 ```git
-> git rebase <origin-branch> 
+git rebase <origin-branch> 
 ```
 
-Having a the next branching state.
+Given the next branching state.
 
 ```bash
         B1———B2
@@ -127,10 +127,10 @@ It can happen when rebasing, sometimes, the remote repository rejects new
 changes because of the rebase itself. The rejection message will read something 
 about our local branch is behind the remote one.
 
-When the rebase is executed, the new changes are put in the middle of the 
-commits stack, desynchronising with the remote picture. In this particular 
-case, the message is confusing, it will ask you to updated from remote branch 
-which, obviously, we don’t want.
+When the rebase is executed, the new changes coming from the origin branch,
+are placed before the current branch commits stack, desynchronising
+with the remote picture. In this particular case, the message is confusing, 
+git asks to update from the remote when, actually, we don’t want.
 
 In order to solve this problem, the push command can be forced by passing the 
 `--force` option.
@@ -142,7 +142,7 @@ git push --force
 __Never, ever, force a push on a collaborative branch__. It will destroy 
 modifications being carried out by other repository members and you will 
 become a hatred object among colleagues. Only use `--force` with your own 
-branches and be aware of what you're doing.
+branches exclusively and under your own risk.
 
 To prevent possible overwritings on the remote branch, there is the 
 `--force-with-lease` option. Whilst the `--force` option will push changes no 
