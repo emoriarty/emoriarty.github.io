@@ -1,0 +1,408 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Nocturnal Notes]]></title><description><![CDATA[Enrique Arias' Personal blog]]></description><link>https://enrq.me/</link><generator>RSS for Node</generator><lastBuildDate>Fri, 10 May 2019 04:08:09 GMT</lastBuildDate><item><title><![CDATA[Apuntes a medianoche]]></title><description><![CDATA[El blog personal de Enrique Arias.
+ 
+ Desarrollador y escritor ocasional entre otras cosas.]]></description><link>https://enrq.me//es/</link><guid isPermaLink="false">https://enrq.me//es/</guid><content:encoded>&lt;p&gt;El blog personal de Enrique Arias.
+&lt;br /&gt;
+&lt;span style=&quot;font-size: 0.9em; color: gray;&quot;&gt;Desarrollador y escritor ocasional entre otras cosas.&lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Midnight Notes]]></title><description><![CDATA[Enrique Arias’ personal blog.
+ 
+ Developer and occasional writer among other things.]]></description><link>https://enrq.me//</link><guid isPermaLink="false">https://enrq.me//</guid><content:encoded>&lt;p&gt;Enrique Arias’ personal blog.
+&lt;br /&gt;
+&lt;span style=&quot;font-size: 0.9em; color: gray;&quot;&gt;Developer and occasional writer among other things.&lt;/span&gt;&lt;/p&gt;</content:encoded></item><item><title><![CDATA[Más allá de merge]]></title><description><![CDATA[Cualquiera que haya trabajado algún tiempo con git, irremediablemente sabrá
+que es hacer un  merge . Supongamos que tenemos una rama  A  que…]]></description><link>https://enrq.me//es/mas-alla-de-merge/</link><guid isPermaLink="false">https://enrq.me//es/mas-alla-de-merge/</guid><pubDate>Sun, 05 May 2019 00:12:03 GMT</pubDate><content:encoded>&lt;p&gt;Cualquiera que haya trabajado algún tiempo con git, irremediablemente sabrá
+que es hacer un &lt;em&gt;merge&lt;/em&gt;. Supongamos que tenemos una rama &lt;em&gt;A&lt;/em&gt; que sale de master.
+El comando &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt; traerá los cambios producidos en &lt;em&gt;A&lt;/em&gt; a &lt;em&gt;master&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;71a621b &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+2dc6065 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; new A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Si todo ha ido bien, los cambios se emplazan por delante en la rama &lt;em&gt;master&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1———2———3———A1———A2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;El registro —&lt;em&gt;log&lt;/em&gt;— refleja un orden incremental de los &lt;em&gt;commits&lt;/em&gt;, en otras
+palabras, los &lt;em&gt;commits&lt;/em&gt; son mostrados en el orden en que son añadidos. Una linea
+temporal de cambios.&lt;/p&gt;
+&lt;p&gt;Cuando estas modificaciones han ocurrido al mismo tiempo en una rama &lt;em&gt;B&lt;/em&gt;, lo
+cual no estan raro como parece, la estrategia de fusión —&lt;em&gt;merge&lt;/em&gt;— no puede hacer
+una actualización &lt;em&gt;fast-forward&lt;/em&gt; (añadir los cambios por delante).&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;057a856 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; Merge branch &lt;span class=&quot;token string&quot;&gt;&apos;B&apos;&lt;/span&gt;
+71a621b &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+1ac6aff &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+2dc6065 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; new A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+d657116 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; new B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Puesto que los cambios ocurrieron en un mismo marco temporal, el comando &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;
+ejecuta una estrategia recursiva, entrelazando los &lt;em&gt;commits&lt;/em&gt; de &lt;em&gt;A&lt;/em&gt; y &lt;em&gt;B&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1———2———3———B1———A1———B2———A2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Estos &lt;em&gt;commits&lt;/em&gt; entrecruzados no muestran adecuadamente los diferentes bloques
+por rama. Como se puede ver arriba, los &lt;em&gt;commits&lt;/em&gt; de &lt;em&gt;B&lt;/em&gt; preceden los de &lt;em&gt;A&lt;/em&gt;
+cuando en realidad se introdujeron después. Además, los &lt;em&gt;commits&lt;/em&gt; no estan
+alineados por significado, todos los &lt;em&gt;commits&lt;/em&gt; pertenicientes a &lt;em&gt;A&lt;/em&gt; deberían mostrarse
+antes que los de &lt;em&gt;B&lt;/em&gt;.&lt;/p&gt;
+&lt;p&gt;Para poder prevenir esta situación una vez la &lt;em&gt;feature&lt;/em&gt; ha sido completada.
+En vez de hacer un &lt;em&gt;merge&lt;/em&gt; con todos los &lt;em&gt;commits&lt;/em&gt; presentes en la rama, la
+solición es pasar los cambios a &lt;em&gt;master&lt;/em&gt; como un único commit junto a un mensaje
+descriptivo. Este enfoque mejora la trazabilidad del registro de git.&lt;/p&gt;
+&lt;p&gt;Quizás para proyectos de menor calado o apuestas personales no sea tan importante
+(aunque siempre es mejor manetener las buenas prácticas) el manetener en
+estricto orden un registro de eventos. Pero cuando se trata de grandes equipos
+donde cada &lt;em&gt;feature&lt;/em&gt; o &lt;em&gt;bug&lt;/em&gt; debe estar perfectamente aislado y etiquetado,
+un registro desordenado marcará la diferencia entre el caos y la armonía del
+proyecto.&lt;/p&gt;
+&lt;p&gt;Para los recien llegados a git (y también para aquellos que no han tenido mucho
+tiempo para profundizar) hay más opciones aparte del comando &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;Vamos más allá de &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;.&lt;/p&gt;
+&lt;h2&gt;Rebase&lt;/h2&gt;
+&lt;p&gt;A diferencia de &lt;em&gt;merge&lt;/em&gt;, &lt;em&gt;rebase&lt;/em&gt; permite hacer un &lt;em&gt;merge&lt;/em&gt; basado en la propia rama,
+manteniendo los &lt;em&gt;commits&lt;/em&gt; relacionados en un mismo lote.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1———2———3———A1———A2———B1———A2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Como podemos comprobar arriba, la rama mantiene una linealiad acorde a los bloques
+de trabajo y no por marca temporal. &lt;/p&gt;
+&lt;p&gt;Un forma interesante para prevenir conflictos mientras se trabaja en una rama
+nueva, es actualizar el espacio de trabajo actual con los cambios de la rama
+origen.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;git&quot;&gt;&lt;pre class=&quot;language-git&quot;&gt;&lt;code class=&quot;language-git&quot;&gt;git rebase &amp;lt;origin-branch&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Dado el siguiente estado.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;        B1———B2
+       /
+A1———A2———A3———A4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;El comando &lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; permite quitar momentáneamente los commits actuales (los que
+no están presente en la rama de origen), volcar los nuevos commits y vuelve a
+incluir los cambios actuales.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;                  B1———B2
+                 /
+A1———A2———A3———A4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Aunque se pretende actualizar habitualmente la rama de trabajo actual, puede pasar
+que las diferencias entre ambas ramas sean demasiado complejas que los conflictos
+terminan apareciendo. Al igual que &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;, los conflictos deben ser solucionados
+aunque pude hacerse de manera interactive. &lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; permite que hacer en caso
+de conflicto: solucionarlos o abortar acción. Abajo se muestra una lista con las
+acciones disponibles en caso de conflicto.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase --continue &lt;span class=&quot;token comment&quot;&gt;# follow rebase&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase --skip     &lt;span class=&quot;token comment&quot;&gt;# jump current conflict&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase —-abort    &lt;span class=&quot;token comment&quot;&gt;# stop rebase and leave things as they were&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase --quit     &lt;span class=&quot;token comment&quot;&gt;# like abort but keeping the committed changes&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Forzando &lt;em&gt;push&lt;/em&gt;&lt;/h2&gt;
+&lt;p&gt;Puede pasar cuando se está haciendo un &lt;em&gt;rebase&lt;/em&gt;, el repositorio remoto rechaza
+los nuevos cambios el hecho del propio &lt;em&gt;rebase&lt;/em&gt;. La mensaje devuelto dice algo
+así como que la rama local está por detrás de la remota.&lt;/p&gt;
+&lt;p&gt;Cuando &lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; ha sido llevado a cabo, los cambios provenientes de la rama de
+origen son situados antes de la pila de commits pertenecientes a la rama de trabajo,
+desincronizando la rama homólogo en remoto. En este caso particular, el mensaje es
+algo confuso, nos pide actualizar desde remote cuando en realidad no es así. &lt;/p&gt;
+&lt;p&gt;A finde de solventar este problema, el comando &lt;code class=&quot;language-text&quot;&gt;push&lt;/code&gt; puede ser forzado usando la
+opción &lt;code class=&quot;language-text&quot;&gt;--force&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push --force&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Nunca, pero nunca, se debe forzar una acción &lt;em&gt;push&lt;/em&gt; en una rama colaborativa&lt;/strong&gt;.
+Esta acción destruirá las modificaciones que habrían sido llevadas a cabo por otros
+miembros del repositorio y tú terminarías por convertirte en objeto de odio entre
+los compañeros. Solo deberías usar &lt;code class=&quot;language-text&quot;&gt;--force&lt;/code&gt; en una rama remota donde solo tú seas
+el único usuario.&lt;/p&gt;
+&lt;p&gt;Para evitar posibles sobrescrituras en una rama remota, existe la opción
+&lt;code class=&quot;language-text&quot;&gt;--force-with-lease&lt;/code&gt;. Mientras que &lt;code class=&quot;language-text&quot;&gt;--force&lt;/code&gt; fuerza los cambios sin miramientos,
+&lt;code class=&quot;language-text&quot;&gt;--force-with-lease&lt;/code&gt; no actualizará si detecta que cualquier otro miembro
+ha añadido sus modificaciones en remoto.&lt;/p&gt;
+&lt;p&gt;Así que, recuerda, siempre es preferible no forzar un &lt;code class=&quot;language-text&quot;&gt;push&lt;/code&gt; pero si no hay más
+remedio, entonces tira de &lt;code class=&quot;language-text&quot;&gt;--force-with-lease&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push --force-with-lease&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Seleccionando &lt;em&gt;commits&lt;/em&gt;&lt;/h2&gt;</content:encoded></item><item><title><![CDATA[Beyond Merge]]></title><description><![CDATA[Everyone who has spent some time working with git irremediably knows about
+merging. Suppose we have a branch called  A  coming from master…]]></description><link>https://enrq.me//beyond-merge/</link><guid isPermaLink="false">https://enrq.me//beyond-merge/</guid><pubDate>Wed, 01 May 2019 16:31:03 GMT</pubDate><content:encoded>&lt;p&gt;Everyone who has spent some time working with git irremediably knows about
+merging. Suppose we have a branch called &lt;em&gt;A&lt;/em&gt; coming from master. The &lt;code class=&quot;language-text&quot;&gt;merge&lt;/code&gt;
+command brings the changes carried in &lt;em&gt;A&lt;/em&gt; into &lt;em&gt;master&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;71a621b &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+2dc6065 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; new A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It does works fine, changes are placed ahead the &lt;em&gt;master&lt;/em&gt; branch.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1———2———3———A1———A2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The log reflects an incremental order of commits, or put in other words,
+the commits are shown in the same order were added. A timeline of changes.&lt;/p&gt;
+&lt;p&gt;When these modifications have happened at the same time in a &lt;em&gt;B&lt;/em&gt; branch, which
+is not as rarely as it seems, the merge strategy cannot do a fast-forward
+update (bring changes ahead).&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;057a856 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; Merge branch &lt;span class=&quot;token string&quot;&gt;&apos;B&apos;&lt;/span&gt;
+71a621b &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+1ac6aff &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+2dc6065 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; new A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+d657116 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; new B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Because changes did happened in the same time frame, the merge command makes
+use of a recursive strategy intertwining &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;B&lt;/em&gt; commits.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1———2———3———B1———A1———B2———A2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Interlaced commits don’t keep proper track of branching blocks. Indeed, as seen
+above, the &lt;em&gt;B&lt;/em&gt; commits precede the ones from &lt;em&gt;A&lt;/em&gt;, when in fact they were introduced
+after. Besides, the commits are not aligned by meaning, each belonging commit to A
+should be placed before the &lt;em&gt;B&lt;/em&gt; ones.&lt;/p&gt;
+&lt;p&gt;There is a way to prevent this scenario once a feature is completed. Instead of
+merging the whole bunch of commits, a better option is pushing the changes into
+&lt;em&gt;master&lt;/em&gt; (or develop) as a unique commit with a descriptive message. This
+approach improves the git log traceability.&lt;/p&gt;
+&lt;p&gt;Perhaps for personal or one-man sized projects is not too important (it is better
+to keep at good habits, though) having a strict sorted timeline of events.
+But when comes to big teams where each feature needs to be perfectly isolated and
+tagged, an unsorted log history would make the difference between mayhem and
+harmony in the enterprise.&lt;/p&gt;
+&lt;p&gt;For those newbies in git (and whose did not find much time to dive into)
+there’s more than only merging.&lt;/p&gt;
+&lt;p&gt;Let’s go beyond merge.&lt;/p&gt;
+&lt;h2&gt;Rebase&lt;/h2&gt;
+&lt;p&gt;Unlike merge, rebase allows to do a merge based on a feature branch keeping
+track of those related commits blocks in the same slot.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1———2———3———A1———A2———B1———A2&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The above picture shows how the the origin branch conserves a linear order
+according to the working blocks and not by timestamps.&lt;/p&gt;
+&lt;p&gt;A convenient way to prevent conflicts while working on a feature branch is to
+bring frequently the latest changes from origin branch.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;git&quot;&gt;&lt;pre class=&quot;language-git&quot;&gt;&lt;code class=&quot;language-git&quot;&gt;git rebase &amp;lt;origin-branch&gt; &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Given the next branching state.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;        B1———B2
+       /
+A1———A2———A3———A4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; permits removing momentarily the current commits (the ones that are not
+present in the origin branch), put in place the new changes and install on top
+feature commits again.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;                  B1———B2
+                 /
+A1———A2———A3———A4&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;While updating the branch is intended to be carried out as often as possible,
+sometimes the differences between both branches are too complex that conflicts
+arise. As with merge, conflicts must be resolved but interactevely. &lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; let
+us decide what to do in case of conflicts: fix them and continue or abort. Below
+there’s a list of available actions when conflicts occur.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase --continue &lt;span class=&quot;token comment&quot;&gt;# follow rebase&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase --skip     &lt;span class=&quot;token comment&quot;&gt;# jump current conflict&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase —-abort    &lt;span class=&quot;token comment&quot;&gt;# stop rebase and leave things as they were&lt;/span&gt;
+&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase --quit     &lt;span class=&quot;token comment&quot;&gt;# like abort but keeping the committed changes&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Forcing push for rebased branches&lt;/h2&gt;
+&lt;p&gt;It can happen when rebasing, sometimes, the remote repository rejects new
+changes because of the rebase itself. The rejection message will read something
+about our local branch is behind the remote one.&lt;/p&gt;
+&lt;p&gt;When the rebase is executed, the new changes coming from the origin branch,
+are placed before the current branch commits stack, desynchronising
+with the remote picture. In this particular case, the message is confusing,
+git asks to update from the remote when, actually, we don’t want.&lt;/p&gt;
+&lt;p&gt;In order to solve this problem, the push command can be forced by passing the
+&lt;code class=&quot;language-text&quot;&gt;--force&lt;/code&gt; option.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push --force&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;strong&gt;Never, ever, force a push on a collaborative branch&lt;/strong&gt;. It will destroy
+modifications being carried out by other repository members and you will
+become a hatred object among colleagues. Only use &lt;code class=&quot;language-text&quot;&gt;--force&lt;/code&gt; with your own
+branches exclusively and under your own risk.&lt;/p&gt;
+&lt;p&gt;To prevent possible overwritings on the remote branch, there is the
+&lt;code class=&quot;language-text&quot;&gt;--force-with-lease&lt;/code&gt; option. Whilst the &lt;code class=&quot;language-text&quot;&gt;--force&lt;/code&gt; option will push changes no
+matter what, &lt;code class=&quot;language-text&quot;&gt;--force-with-lease&lt;/code&gt; won’t allow any update if some other
+collaborator has added changes to the remote branch.&lt;/p&gt;
+&lt;p&gt;So, remember, always is preferable not forcing a push action but if there’s no
+other way, then make use of &lt;code class=&quot;language-text&quot;&gt;--force-with-lease&lt;/code&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; push --force-with-lease&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Choosing commits&lt;/h2&gt;
+&lt;p&gt;While working in a branch we don’t pay much attention how the the commit
+history looks like. In fact we are focused on development. But when the current
+work is already completed, is time to sort the log.  By accumulating all those
+non-useful commits, we will end up looking like we’re suffering Diogenes syndrome.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;259aff2 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; body edit
+7a48555 wip: body content
+71a621b A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+2dc6065 new A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+d9ad32e &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash
+13b16a5 Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The upper log shows a log history where the master branch (&lt;em&gt;d9ad32e&lt;/em&gt;) and the
+local HEAD (&lt;em&gt;259aff2&lt;/em&gt;) points to different commits. Except the first commit
+(&lt;em&gt;2dc6065&lt;/em&gt;) there are no meaningful descriptions between them. Since each commit
+refers to the same feature, a suitable solution to arrange the log is to use
+&lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; to join them into one commit. &lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; is not only an alternative to the merge command. Actually, the command
+is meant to rewrite the project history. With that notion in mind, &lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; is
+able to be used in the same branch. Instead of specifying a branch name, a
+previous commit is passed in. Actually a branch name is not more that a
+meaningful name pointing to a commit.&lt;/p&gt;
+&lt;p&gt;There is more regarding the rebase. It can be executed automatically by default
+or interactively by passing the &lt;code class=&quot;language-text&quot;&gt;-i&lt;/code&gt; option. The Interactive mode gives the
+possibility to rearrange the log by modifying each commit with a specific command.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;g rebase -i d9ad32e&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After running the previous command, the default editor pops out opening the
+next file. In my case, vim is the default editor but you can set out yours
+by using the git config &lt;a href=&quot;https://git-scm.com/book/en/v2/Customizing-Git-Git-Configuration#_code_core_editor_code&quot;&gt;core.editor&lt;/a&gt; option.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;reword 2dc6065 new A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+fixup 71a621b A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+fixup 7a48555 wip: body content
+fixup 259aff2 body edit
+
+&lt;span class=&quot;token comment&quot;&gt;# Rebase d9ad32e..259aff2 onto d9ad32e (4 commands)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;fixup&lt;/code&gt; or &lt;code class=&quot;language-text&quot;&gt;f&lt;/code&gt; for short, merges in bulk the marked commits with the previously
+picked one. In difference with &lt;code class=&quot;language-text&quot;&gt;squash&lt;/code&gt;, &lt;code class=&quot;language-text&quot;&gt;fixup&lt;/code&gt; don’t reuse the provided message.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;language-text&quot;&gt;reword&lt;/code&gt; allows to rewrite the commit message. &lt;code class=&quot;language-text&quot;&gt;rebase&lt;/code&gt; executes the provided
+actions after saving the file and closing the editor. When the task has been
+completed, the editor jumps again, allowing us to introduce the new commit description. &lt;/p&gt;
+&lt;p&gt;Once the rebase has completed, the next log looks like below.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;2569f57 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; feature A
+d9ad32e &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash
+13b16a5 Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt; Lots of related commits&lt;/h2&gt;
+&lt;p&gt;Sometimes it happens to have a sudden idea while working on in a total different
+subject. You stop working immediately what you’re at and start on that new idea.
+Damn serendipity!&lt;/p&gt;
+&lt;p&gt;The next steps from a git perspective are (1) saving things up and (2) create a
+new branch. Now, we are able to work in whatever is that brilliant idea. The
+git loop starts: Work. Test things up. Save progress. And back to the beginning
+of the loop until the job is done.&lt;/p&gt;
+&lt;p&gt;Finally we go back to the unfinished branch and start working again in the same loop.&lt;/p&gt;
+&lt;p&gt;Lots of commits are created during this process. All of them refers to the same
+topic. So, why keeping all these commits when actually only one commit per branch
+will do? Is it not easier to search in the log for a commit with a one nice and
+concise message than looking for a bunch of different commits? Are they in the
+same slot? Do they got interlaced among unrelated commits?&lt;/p&gt;
+&lt;p&gt;All right, we can pick and merge commits by doing a rebase, but why bother when
+we already know everything relates to the same piece? Why not “squash” all of
+them in the same first commit? Sure we can.&lt;/p&gt;
+&lt;p&gt;Let’s tackle the &lt;em&gt;autosquash&lt;/em&gt; feature.&lt;/p&gt;
+&lt;h3&gt;Autosquash (or how to keep a clean log while working)&lt;/h3&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1a9bfea &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+d9ad32e &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash
+13b16a5 Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;After the first commit (&lt;em&gt;1a9bfea&lt;/em&gt;), we see that we’re going to work over the same
+file, so the next ones can be coerced up to be part of the first commit in the
+current branch by using the option &lt;code class=&quot;language-text&quot;&gt;--fixup&lt;/code&gt;. &lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit —fixup&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;1a9bfea&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;As you recall &lt;em&gt;fixup&lt;/em&gt; is one of the actions present in the &lt;em&gt;rebase&lt;/em&gt; command.
+Similarly, this &lt;em&gt;fixup&lt;/em&gt; option allows merging the current commit into the
+provided one. But first let’s see the resulting log.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;4cca556 &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+1a9bfea New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+d9ad32e &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash
+13b16a5 Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Have you noticed the “fixup!” prefix in the last commit message? Also the
+message is the same of the previous commit. Wait! wasn’t supposed to be merged
+into the provided commit? Yes, it is. But don’t worry. It’s imperative to keep
+the changes in the log, otherwise they could get lost. Later on will see how
+they are merged.&lt;/p&gt;
+&lt;p&gt;There is another way to &lt;em&gt;fixup&lt;/em&gt; commits. Instead providing a specific commit hash,
+a commit message can be look through by a matching text. The first match will
+be used as entry point for the &lt;em&gt;fixup&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit —fixup&lt;span class=&quot;token operator&quot;&gt;=&lt;/span&gt;:/A\ &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Now, let’s say we change and commit the &lt;em&gt;README&lt;/em&gt; file. Then work again in the
+previous file a commit with the &lt;em&gt;fixup&lt;/em&gt; option again. The resulting log should
+look like the picture below.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;1e0118e &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+6991e75 README updated
+72f1297 fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+4cca556 fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+1a9bfea New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+d9ad32e &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash
+13b16a5 Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;At this point, the feature branch is completed. Let’s rebase from where the
+new log series was established, the commit hash &lt;em&gt;d9ad32e&lt;/em&gt;.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; rebase -i —-autosquash d9ad32e &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;code class=&quot;language-text&quot;&gt;—-autosquash&lt;/code&gt; option automatically moves every commit message beginning with
+“fixup!” right before the commit marked to be modified.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;pick 7eadcf3 New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+fixup c913bb3 fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+fixup e8bd977 fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+fixup 77ca177 fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; fixup&lt;span class=&quot;token operator&quot;&gt;!&lt;/span&gt; New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+pick e8fe7f6 README updated
+
+&lt;span class=&quot;token comment&quot;&gt;# Rebase d9ad32e..77ca177 onto d9ad32e (5 commands)&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can appreciate how git automatically has replaced the default pick command
+by &lt;em&gt;fixup&lt;/em&gt;. git knows how to do so because we previously marked the commits were
+going to be squashed into the selected commit. The way the order was kept is by
+adding a new “fixup!” prefix to the commit message. The more prefixes,
+the next in line.&lt;/p&gt;
+&lt;p&gt;After saving the file the rebase takes action and the resulting log would look
+like this.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;d571d6c &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; README updated
+8e078dd New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+d9ad32e &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash
+13b16a5 Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt;
+76a1097 Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated
+a31e004 README updated
+44d4c5b New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;
+ee42779 New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In order to have a more complete example both files are separate commits. The
+&lt;code class=&quot;language-text&quot;&gt;README&lt;/code&gt; file update could be part of the same commit, keeping a tighter and
+coherent log.&lt;/p&gt;
+&lt;h2&gt;Squashing a branch into master&lt;/h2&gt;
+&lt;p&gt;The last way we are going to see how to squash non-useful commits (at least
+from a global perspective) can be done by passing the &lt;code class=&quot;language-text&quot;&gt;--squash&lt;/code&gt; option when
+executing a merge command.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;* d571d6c - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; README updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;23 hours ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 8e078dd - New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;23 hours ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; * 1ac6aff - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;5 days ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; * d657116 - new B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;5 days ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;/
+* d9ad32e - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;2 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 13b16a5 - Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 76a1097 - Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* a31e004 - README updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 44d4c5b - New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* ee42779 - New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;By looking at the current log, we see branch &lt;em&gt;A&lt;/em&gt;, &lt;em&gt;B&lt;/em&gt; and &lt;em&gt;master&lt;/em&gt; are  pointing to
+commits &lt;em&gt;d571d6c&lt;/em&gt;, &lt;em&gt;1ac6aff&lt;/em&gt; and &lt;em&gt;d9ad32e&lt;/em&gt;, respectively. We decide it is time to
+squash &lt;em&gt;A&lt;/em&gt; and &lt;em&gt;B&lt;/em&gt; branches into &lt;em&gt;master&lt;/em&gt; but we don’t want to keep the current
+commits from both branches. With one commit will be enough to bring both
+features. Remember the examples depicted here have an informational purpose,
+in real world we will do a commit per branch in order to preserve a succinct
+but complete log.&lt;/p&gt;
+&lt;p&gt;Let’s merge first the &lt;em&gt;B&lt;/em&gt; branch.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --squash B&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If we check the log again, will see no new commit. A squashing merge does not
+complete the operation at all. The index state is modified with the changes from
+&lt;em&gt;B&lt;/em&gt; branch but the pending commit is left for the user. At this point let’s
+also merge by squashing the &lt;em&gt;A&lt;/em&gt; branch and commiting the changes.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;&lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; merge --squash A &lt;span class=&quot;token operator&quot;&gt;&amp;amp;&amp;amp;&lt;/span&gt; &lt;span class=&quot;token function&quot;&gt;git&lt;/span&gt; commit&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The resulting log do not leave a trace of the individual commits from branches
+&lt;em&gt;A&lt;/em&gt; and &lt;em&gt;B&lt;/em&gt; merged in &lt;em&gt;master&lt;/em&gt;. Only one commit stands for changes done in both
+branches.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;* ee34439 - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; Squashed commit of the following: &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;12 seconds ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; * d571d6c - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;A&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; README updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;23 hours ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; * 8e078dd - New A &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;23 hours ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;/
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; * 1ac6aff - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;5 days ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt; * d657116 - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;B&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; new B &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;5 days ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+&lt;span class=&quot;token operator&quot;&gt;|&lt;/span&gt;/
+* d9ad32e - A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;2 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 13b16a5 - Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 76a1097 - Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* a31e004 - README updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 44d4c5b - New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* ee42779 - New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The last thing to do after is removing the feature branches. Once merged, there’s no need for them.&lt;/p&gt;
+&lt;p&gt;And this is the final log without feature branches.&lt;/p&gt;
+&lt;div class=&quot;gatsby-highlight&quot; data-language=&quot;bash&quot;&gt;&lt;pre class=&quot;language-bash&quot;&gt;&lt;code class=&quot;language-bash&quot;&gt;* ee34439 - &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;HEAD -&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt; master&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; Squashed commit of the following: &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;12 hours ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* d9ad32e - A new commit is introduced &lt;span class=&quot;token keyword&quot;&gt;while&lt;/span&gt; previous changes are &lt;span class=&quot;token keyword&quot;&gt;in&lt;/span&gt; stash &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 13b16a5 - Revert &lt;span class=&quot;token string&quot;&gt;&quot;README updated&quot;&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 76a1097 - Demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* a31e004 - README updated &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* 44d4c5b - New README &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;
+* ee42779 - New demo &lt;span class=&quot;token function&quot;&gt;file&lt;/span&gt; &lt;span class=&quot;token punctuation&quot;&gt;(&lt;/span&gt;3 weeks ago&lt;span class=&quot;token punctuation&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;token operator&quot;&gt;&amp;lt;&lt;/span&gt;Enrique Arias&lt;span class=&quot;token operator&quot;&gt;&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Hope these advices on how git can be used so to maintain an incremental, readable
+and clean log are helpful. Perhaps it does not look too important keeping a
+sorted log but, believe me, the repo maintaner will be grateful. And also by
+doing these practices day by day will have an positive impact in your
+professional career. So don’t have a messy log, let the work talk for you.&lt;/p&gt;</content:encoded></item></channel></rss>
